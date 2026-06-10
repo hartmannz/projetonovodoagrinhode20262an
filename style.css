@@ -1,0 +1,483 @@
+/* ==========================================================================
+   VARIÁVEIS DE DESIGN (Para fácil alteração de cores e fontes)
+   ========================================================================== */
+:root {
+    --primary: #2d6a4f;
+    --primary-light: #52b788;
+    --primary-dark: #1b4332;
+    --accent: #d8f3dc;
+    --bg-light: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   RESET E CONFIGURAÇÕES BASE
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   BARRA DE NAVEGAÇÃO (GLASSMORPHISM)
+   ========================================================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo i {
+    color: var(--primary-light);
+}
+
+.logo span {
+    color: var(--primary-light);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* Linha decorativa no hover do menu */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-light);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.btn-header {
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 14px rgba(45, 106, 79, 0.2);
+    transition: var(--transition-smooth);
+}
+
+.btn-header:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.3);
+}
+
+/* ==========================================================================
+   SEÇÃO HERO (ABERTURA PRINCIPAL)
+   ========================================================================== */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(11, 29, 22, 0.9) 30%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    color: white;
+}
+
+.badge {
+    background-color: rgba(82, 183, 136, 0.2);
+    color: var(--primary-light);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(82, 183, 136, 0.3);
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+    background-color: white;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   SEÇÃO SOBRE (GRID ASSIMÉTRICO)
+   ========================================================================== */
+.about-section {
+    padding: 120px 8%;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.section-tag {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.feature-item i {
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+.feature-item h4 {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin-bottom: 4px;
+}
+
+.about-image-wrapper {
+    position: relative;
+}
+
+.about-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ==========================================================================
+   SEÇÃO PILARES (CARDS METODOLÓGICOS)
+   ========================================================================== */
+.pillars-section {
+    padding: 100px 8%;
+    background-color: #f1f5f2;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.pillar-card {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.pillar-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(45, 106, 79, 0.08);
+    border-color: rgba(82, 183, 136, 0.3);
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent);
+    color: var(--primary);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+}
+
+.pillar-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+.pillar-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   SEÇÃO SEÇÃO STATS
+   ========================================================================== */
+.stats-section {
+    background-color: var(--primary-dark);
+    padding: 80px 8%;
+    color: white;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-box .stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-light);
+    display: block;
+}
+
+.stat-box .stat-label {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   RODAPÉ PREMIUM
+   ========================================================================== */
+.footer {
+    background-color: #0b1d16;
+    color: #94a3b8;
+    padding: 80px 8% 30px 8%;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.footer-logo span {
+    color: var(--primary-light);
+}
+
+.footer-content p {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: white;
+    background-color: rgba(255,255,255,0.05);
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.footer-socials a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE FIRST / ADAPTATIVO)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 5%;
+    }
+    .nav-menu {
+        display: none; /* Esconde o menu para simplificar em telas pequenas */
+    }
+    .hero-section {
+        padding: 0 5%;
+    }
+    .hero-title {
+        font-size: 2.3rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .btn-primary, .btn-secondary {
+        text-align: center;
+    }
+}
